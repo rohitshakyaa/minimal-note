@@ -102,8 +102,9 @@ export default defineComponent({
   methods: {
     ...mapMutations(["setSync"]),
     addNote() {
-      console.log(this.note);
-      console.log(this.shouldTextBeBlack(this.note.color));
+      if (this.note.text === "") {
+        return false;
+      }
       if (!this.shouldTextBeBlack(this.note.color)) {
         this.note.fontColor = "#fff";
         this.note.classs = "white";
