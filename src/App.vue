@@ -70,6 +70,7 @@ import { defineComponent } from "vue";
 import autosize from "autosize";
 import axios from "axios";
 import { mapGetters, mapMutations } from "vuex";
+import Note from "@/types/Note";
 
 export default defineComponent({
   data() {
@@ -81,16 +82,16 @@ export default defineComponent({
         color: "#fecf28",
         fontColor: "#000000",
         classs: "black",
-      },
+      } as Note,
       notes: [
-        {
-          text: "Minimal Notes",
-          date: new Date(Date.now()).toLocaleString(),
-          color: "#fecf28",
-          fontColor: "#000000",
-          classs: "black",
-        },
-      ],
+        // {
+        //   text: "Minimal Notes",
+        //   date: new Date(Date.now()).toLocaleString(),
+        //   color: "#fecf28",
+        //   fontColor: "#000000",
+        //   classs: "black",
+        // },
+      ] as Array<Note>,
 
       syncing: false,
     };
@@ -168,6 +169,7 @@ export default defineComponent({
     },
   },
   mounted() {
+    console.log();
     if (localStorage.getItem("notes"))
       this.notes = JSON.parse(localStorage.getItem("notes") || "");
     if (localStorage.getItem("noteColor"))
